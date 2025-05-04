@@ -1,0 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/04 14:40:25 by marvin            #+#    #+#             */
+/*   Updated: 2025/05/04 14:40:25 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <pthread.h>
+# include <sys/time.h>
+# include <limits.h>
+# include <stdio.h>
+
+/*=============================================================================#
+#                                   DEFINES                                    #
+#=============================================================================*/
+
+# define TRUE 1
+# define FALSE 0
+
+/*
+** ANSI color codes for terminal output
+** Usage:
+** 		printf(RED "This text is red" RST);
+** 		printf(G "This text is green" RST);
+** Remember to reset the color after using it with RST.
+*/
+# define RST	"\033[0m"		// reset color
+# define RED	"\033[1;31m"	// bold red
+# define G		"\033[1;32m"	// bold green
+# define Y		"\033[1;33m"	// bold yellow
+# define B		"\033[1;34m"	// bold blue
+# define M		"\033[1;35m"	// bold magenta
+# define C		"\033[1;36m"	// bold cyan
+# define W		"\033[1;37m"	// bold white
+
+/*=============================================================================#
+#                                   STRUCTS                                    #
+#=============================================================================*/
+
+typedef pthread_mutex_t	t_mtx;
+
+typedef struct s_table	t_table;
+
+typedef struct s_fork	t_fork;
+
+typedef struct s_philo
+{
+	int			id;
+	long		meal_counter;
+	bool		full;
+	long		last_meal_time; // time passed from last meal
+	t_fork		*left_fork;
+	t_fork		*right_fork;
+	pthread_t	thread_id; //a philo is a thread
+	t_table		*table;
+}				t_philo;
+
+typedef struct s_fork
+{
+	t_mtx	fork;
+	int		fork_id;
+}				t_fork;
+
+// ./philo 5 800 300 200 [7]
+
+typedef struct s_table
+{
+	long	philo_nbr; // 5
+	long	time_to_die; // 800
+	long	time_to_eat; // 300
+	long	time_to_sleep; // 200
+	long	nbr_limit_meals; // [7] | FLAG if -1
+	long	start_simulation; // time of start of simulation
+	bool	end_simulation; // a philo dies or all philo full
+	t_fork	*forks; // array of forks
+	t_philo	*philos; // array of philos
+}				t_table;
+
+/*=============================================================================#
+#                                   PARSING                                    #
+#=============================================================================*/
+
+void	parse_opt_args(char **argv);
+int		parse_last_arg(char *arg);
+int		parse_args(char **argv);
+
+/*=============================================================================#
+#                                   UTILS                                      #
+#=============================================================================*/
+
+int		ft_isdigit(char c);
+void	error_msg(const char *error);
+
+#endif
