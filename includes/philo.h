@@ -29,7 +29,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef enum	e_opcode
+typedef enum e_opcode
 {
 	LOCK,
 	UNLOCK,
@@ -38,7 +38,7 @@ typedef enum	e_opcode
 	CREATE,
 	JOIN,
 	DETACH
-}				t_opcode;
+}			t_opcode;
 
 /*
 ** ANSI color codes for terminal output
