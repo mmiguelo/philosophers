@@ -46,13 +46,13 @@ static void	handle_mutex_error(int status, t_opcode opcode)
 void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode)
 {
 	if (LOCK == opcode)
-		pthread_mutex_lock(mutex);
+		handle_mutex_error(pthread_mutex_lock(mutex), opcode);
 	else if (UNLOCK == opcode)
-		pthread_mutex_unlock(mutex);
+		handle_mutex_error(pthread_mutex_unlock(mutex), opcode);
 	else if (INIT == opcode)
-		pthread_mutex_init(mutex, NULL);
+		handle_mutex_error(pthread_mutex_init(mutex, NULL), opcode);
 	else if (DESTROY == opcode)
-		pthread_attr_destroy(mutex);
+		handle_mutex_error(pthread_attr_destroy(mutex), opcode);
 	else
 		error_msg("Wrong opcode for mutex handle");
 }
