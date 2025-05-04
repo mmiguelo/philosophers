@@ -54,7 +54,7 @@ void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode)
 	else if (DESTROY == opcode)
 		handle_mutex_error(pthread_attr_destroy(mutex), opcode);
 	else
-		error_msg("Wrong opcode for mutex handle");
+		error_msg("Wrong opcode for mutex handle.\n");
 }
 
 static void	handle_thread_error(int status, t_opcode opcode)
