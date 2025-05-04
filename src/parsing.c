@@ -33,14 +33,14 @@ static const char	*valid_input(const char *str)
 	if (*str == '+')
 		++str;
 	else if (*str == '-')
-		error_msg("Invalid input: negative number not allowed");
+		error_msg("Invalid input: negative number not allowed\n");
 	if (!ft_isdiigit(*str))
-		error_msg("Invalid input: not a number");
+		error_msg("Invalid input: not a number\n");
 	number = str;
 	while (ft_isdigit(*str++))
 		++len;
 	if (len == 10)
-		error_msg("Invalid input: number too large");
+		error_msg("Invalid input: number too large\n");
 	return (number);
 }
 
@@ -53,7 +53,7 @@ static long	ft_atol(const char *str)
 	while (ft_isdigit(*str))
 		nbr = (nbr * 10) + (*str++ - '0');
 	if (nbr > INT_MAX)
-		error_msg("Invalid input: number too large");
+		error_msg("Invalid input: number too large\n");
 	return (nbr);
 }
 
@@ -66,7 +66,7 @@ void	parse_input(t_table *table, char **av)
 	if (table->time_to_die < 6e4
 		|| table->time_to_eat < 6e4
 		|| table->time_to_sleep < 6e4)
-		error_msg("Invalid input: timestamps too small");
+		error_msg("Invalid input: timestamps too small\n");
 	if (av[5])
 		table->nbr_limit_meals = ft_atol(av[5]);
 	else
