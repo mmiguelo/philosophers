@@ -56,3 +56,37 @@ void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode)
 	else
 		error_msg("Wrong opcode for mutex handle");
 }
+
+static void	handle_thread_error(int status, t_opcode opcode)
+{
+	if (status == 0)
+		return ;
+	if (EAGAIN == status)
+		error_msg("No resources to create another thread.\n");
+	else if (EPERM == status)
+		error_msg("The caller does not have appropriate permission.\n");
+	else if (EINVAL == status && CREATE == opcode)
+		error_msg("The value specified by attr is invalid.\n");
+	else if (EINVAL == status && (JOIN == opcode || DETACH == opcode))
+		error_msg("The value specified by thread is not joinable.\n");
+	else if (ESRCH == status)
+		error_msg("No thread could be found corresponding to that\
+			specified by the given thread ID, thread.\n");
+	else if (EDEADLK == status)
+		error_msg("A deadlock was detected or the value of\
+			thread specifies the calling thread.\n");
+}
+
+void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
+		void *data, t_opcode opcode)
+{
+	if (CREATE == opcode)
+		handle_thread_error(pthread_create(thread, NULL, foo, data), opcode);
+	else if (JOIN == opcode)
+		handle_thread_error(pthread_join(*thread, NULL), opcode);
+	else if (DETACH == opcode)
+		handle_thread_error(pthread_detach(*thread), opcode);
+	else
+		error_msg("Wrong opcode for thread handle: \
+			use: CREATE, JOIN, DETACH.\n");
+}
