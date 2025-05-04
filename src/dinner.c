@@ -25,6 +25,6 @@ void	dinner_start(t_table *table)
 	{
 		while (++i < table->philo_nbr)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
-					&table->philos[i], CREATE);
+				&table->philos[i], CREATE);
 	}
 }
