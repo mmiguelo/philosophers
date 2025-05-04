@@ -12,13 +12,6 @@
 
 #include "philo.h"
 
-int	ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
 void	error_msg(const char *error)
 {
 	printf(RED"%s\n"RST, error);
