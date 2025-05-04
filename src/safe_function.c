@@ -12,4 +12,12 @@
 
 #include "philo.h"
 
-void	*safe_function
+void	*safe_malloc(size_t bytes)
+{
+	void	*ret;
+
+	ret = malloc(bytes);
+	if (!ret)
+		error_msg("Error with malloc\n");
+	return (ret);
+}
