@@ -20,6 +20,7 @@
 # include <sys/time.h>
 # include <limits.h>
 # include <stdio.h>
+# include <errno.h>
 
 /*=============================================================================#
 #                                   DEFINES                                    #
@@ -27,6 +28,17 @@
 
 # define TRUE 1
 # define FALSE 0
+
+typedef enum	e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH
+}				t_opcode;
 
 /*
 ** ANSI color codes for terminal output
