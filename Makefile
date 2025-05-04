@@ -22,7 +22,7 @@ RM = rm -rf
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
 
-GENERAL = main.c parsing.c utils.c
+GENERAL = main.c init.c parsing.c safe:functions.c utils.c
 
 #==============================================================================#
 #                                    PATHS                                     #
