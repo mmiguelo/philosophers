@@ -100,15 +100,13 @@ typedef struct s_table
 }				t_table;
 
 /*=============================================================================#
-#                                   PARSING                                    #
+#                                   FUNCTIONS                                  #
 #=============================================================================*/
 
 void	parse_input(t_table *table, char **av);
-
-/*=============================================================================#
-#                                   UTILS                                      #
-#=============================================================================*/
-
+void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
 void	error_msg(const char *error);
+void	data_init(t_table *table);
+void	*safe_malloc(size_t bytes);
 
 #endif
