@@ -27,7 +27,7 @@ static void	handle_mutex_error(int status, t_opcode opcode)
 	if (status == 0)
 		return ;
 	if (EINVAL == status && (LOCK == opcode || UNLOCK == opcode
-		|| DESTROY == opcode))
+			|| DESTROY == opcode))
 		error_msg("The value specified by mutex is invalid.\n");
 	else if (EINVAL == status && INIT == opcode)
 		error_msg("The value specified by attr is invalid.\n");
