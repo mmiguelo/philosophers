@@ -110,5 +110,6 @@ void	*safe_malloc(size_t bytes);
 void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data,
 			t_opcode opcode);
+void	dinner_start(t_table *table);
 
 #endif
