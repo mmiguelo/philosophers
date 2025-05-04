@@ -12,15 +12,15 @@
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	if (argc == 5)
+	t_table	table;
+
+	if (ac == 5 || ac == 6)
 	{
-		if (!parse_args(argv))
-			printf("Invalid numeric arguments.\n");
+		parse_input(&table, av);
+		data_init(&table);
 	}
-	else if (argc == 6)
-		parse_opt_args(argv);
 	else
 		error_msg("Wrong input:\n"
 			G"Correct is ./philo 5 800 200 200 [7] for example"RST);
