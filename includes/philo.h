@@ -91,15 +91,12 @@ typedef struct s_table
 #                                   PARSING                                    #
 #=============================================================================*/
 
-void	parse_opt_args(char **argv);
-int		parse_last_arg(char *arg);
-int		parse_args(char **argv);
+void	parse_input(t_table *table, char **av);
 
 /*=============================================================================#
 #                                   UTILS                                      #
 #=============================================================================*/
 
-int		ft_isdigit(char c);
 void	error_msg(const char *error);
 
 #endif
