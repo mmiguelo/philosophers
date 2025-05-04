@@ -72,8 +72,8 @@ typedef struct s_philo
 	long		meal_counter;
 	bool		full;
 	long		last_meal_time; // time passed from last meal
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	t_fork		*first_fork;
+	t_fork		*second_fork;
 	pthread_t	thread_id; //a philo is a thread
 	t_table		*table;
 }				t_philo;
