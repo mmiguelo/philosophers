@@ -12,54 +12,63 @@
 
 #include "philo.h"
 
-int	parse_args(char **argv)
+static inline bool	ft_isdigit(char c)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i])
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (FALSE);
-			j++;
-		}
-		i++;
-	}
-	return (TRUE);
+	return (c >= '0' && c <= '9');
 }
 
-int	parse_last_arg(char *arg)
+static bool	ft_isspace(char c)
 {
-	int	i;
-
-	i = 0;
-	if (arg[i] != '[')
-		return (FALSE);
-	while (ft_isdigit(arg[i]))
-		i++;
-	if (arg[i] != ']')
-		return (FALSE);
-	return (arg[i + 1] == '\0');
+	return ((c >= 9 && c <= 13) || c == 32);
 }
 
-void	parse_opt_args(char **argv)
+static const char	*valid_input(const char *str)
 {
-	int	i;
+	int	len;
+	const char	*number;
 
-	i = 1;
-	while (i < 5)
-	{
-		if (!parse_args(&argv[i]))
-		{
-			printf("Invalid numeric arguments: %s\n", argv[i]);
-			return ;
-		}
-		i++;
-	}
-	if (!parse_last_arg(argv[i]))
-		printf("Invalid optional argument format: %s\n", argv[i]);
+	len = 0;
+	while (ft_isspace(*str))
+		++str;
+	if (*str == '+')
+		++str;
+	else if (*str == '-')
+		error_msg("Invalid input: negative number not allowed");
+	if (!ft_isdiigit(*str))
+		error_msg("Invalid input: not a number");
+	number = str;
+	while (ft_isdigit(*str++))
+		++len;
+	if (len == 10)
+		error_msg("Invalid input: number too large");
+	return (number);
+}
+
+static long	ft_atol(const char *str)
+{
+	long	nbr;
+
+	nbr = 0;
+	str = valid_input(str);
+	while (ft_isdigit(*str))
+		nbr = (nbr * 10) + (*str++ - '0');
+	if (nbr > INT_MAX)
+		error_msg("Invalid input: number too large");
+	return (nbr);
+}
+
+void	parse_input(t_table *table, char **av)
+{
+	table->philo_nbr = ft_atol(av[1]);
+	table->time_to_die = ft_atol(av[2]) * 1e3;
+	table->time_to_eat = ft_atol(av[3]) * 1e3;
+	table->time_to_sleep = ft_atol(av[4]) * 1e3;
+	if (table->time_to_die < 6e4
+		|| table->time_to_eat < 6e4
+		|| table->time_to_sleep < 6e4)
+		error_msg("Invalid input: timestamps too small");
+	if (av[5])
+		table->nbr_limit_meals = ft_atol(av[5]);
+	else
+		table->nbr_limit_meals = -1;
 }
