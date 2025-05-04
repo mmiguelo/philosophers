@@ -24,7 +24,7 @@ static bool	ft_isspace(char c)
 
 static const char	*valid_input(const char *str)
 {
-	int	len;
+	int			len;
 	const char	*number;
 
 	len = 0;
