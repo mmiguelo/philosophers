@@ -104,9 +104,10 @@ typedef struct s_table
 #=============================================================================*/
 
 void	parse_input(t_table *table, char **av);
-void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
 void	error_msg(const char *error);
 void	data_init(t_table *table);
 void	*safe_malloc(size_t bytes);
+void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
+void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode)
 
 #endif
