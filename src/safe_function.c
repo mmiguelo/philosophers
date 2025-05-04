@@ -25,7 +25,22 @@ void	*safe_malloc(size_t bytes)
 static void	handle_mutex_error(int status, t_opcode opcode)
 {
 	if (status == 0)
-		return
+		return ;
+	if (EINVAL == status && (LOCK == opcode || UNLOCK == opcode
+		|| DESTROY == opcode))
+		error_msg("The value specified by mutex is invalid.\n");
+	else if (EINVAL == status && INIT == opcode)
+		error_msg("The value specified by attr is invalid.\n");
+	else if (EDEADLK == status)
+		error_msg("A deadlock would occur if thread blocked waiting for\
+			 mutex.\n");
+	else if (EPERM == status)
+		error_msg("The current thread does not hold a lock mutex.\n");
+	else if (ENOMEM == status)
+		error_msg("The process cannot allocate enough memory to create\
+			 another mutex.\n");
+	else if (EBUSY == status)
+		error_msg("Mutex is locked.\n");
 }
 
 void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode)
