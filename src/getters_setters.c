@@ -18,3 +18,13 @@ void	set_bool(t_mtx *mutex, bool *dest, bool value)
 	*dest = value;
 	safe_mutex_handle(mutex, UNLOCK);
 }
+
+void	get_bool(t_mtx *mutex, bool *value)
+{
+	bool	ret;
+
+	safe_mutex_handle(mutex, LOCK);
+	ret = *value;
+	safe_mutex_handle(mutex, UNLOCK);
+	return (ret);
+}
