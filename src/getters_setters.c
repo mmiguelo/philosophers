@@ -28,3 +28,10 @@ void	get_bool(t_mtx *mutex, bool *value)
 	safe_mutex_handle(mutex, UNLOCK);
 	return (ret);
 }
+
+void	set_long(t_mtx *mutex, long *dest, long value)
+{
+	safe_mutex_handle(mutex, LOCK);
+	*dest = value;
+	safe_mutex_handle(mutex, UNLOCK);
+}
