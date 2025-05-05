@@ -45,7 +45,7 @@ void	precise_usleep(long usec, t_table *table)
 	while (gettime(MICROSECOND) - start < usec)
 	{
 		if (simulation_finished(table))
-			break;
+			break ;
 		elapsed = gettime(MICROSECOND) - start;
 		remaining = usec - elapsed;
 		if (remaining > 1e3)
