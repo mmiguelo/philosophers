@@ -37,6 +37,13 @@ typedef enum e_opcode
 	DETACH
 }			t_opcode;
 
+typedef enum e_timecode
+{
+	SECOND,
+	MILISECOND,
+	MICROSECOND
+}			t_timecode;
+
 /*
 ** ANSI color codes for terminal output
 ** Usage:
