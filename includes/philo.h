@@ -26,9 +26,6 @@
 #                                   DEFINES                                    #
 #=============================================================================*/
 
-# define TRUE 1
-# define FALSE 0
-
 typedef enum e_opcode
 {
 	LOCK,
