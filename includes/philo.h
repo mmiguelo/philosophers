@@ -95,6 +95,7 @@ typedef struct s_table
 	long	nbr_limit_meals; // [7] | FLAG if -1
 	long	start_simulation; // time of start of simulation
 	bool	end_simulation; // a philo dies or all philo full
+	bool	all_threads_ready; // syncro philospphers
 	t_fork	*forks; // array of forks
 	t_philo	*philos; // array of philos
 }				t_table;
