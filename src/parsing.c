@@ -34,7 +34,7 @@ static const char	*valid_input(const char *str)
 		++str;
 	else if (*str == '-')
 		error_msg("Invalid input: negative number not allowed\n");
-	if (!ft_isdiigit(*str))
+	if (!ft_isdigit(*str))
 		error_msg("Invalid input: not a number\n");
 	number = str;
 	while (ft_isdigit(*str++))
