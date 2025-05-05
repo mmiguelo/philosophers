@@ -123,5 +123,6 @@ void	set_long(t_mtx *mutex, long *dest, long value);
 long	get_long(t_mtx *mutex, long *value);
 bool	simulation_finished(t_table *table);
 void	wait_all_threads(t_table *table);
+long	gettime(t_timecode time_code);
 
 #endif
