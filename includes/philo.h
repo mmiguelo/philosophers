@@ -26,6 +26,8 @@
 #                                   DEFINES                                    #
 #=============================================================================*/
 
+#define DEBUG_MODE 0
+
 typedef enum e_opcode
 {
 	LOCK,
@@ -34,14 +36,14 @@ typedef enum e_opcode
 	DESTROY,
 	CREATE,
 	JOIN,
-	DETACH
+	DETACH,
 }			t_opcode;
 
 typedef enum e_timecode
 {
 	SECOND,
 	MILISECOND,
-	MICROSECOND
+	MICROSECOND,
 }			t_timecode;
 
 typedef enum e_status
@@ -52,7 +54,6 @@ typedef enum e_status
 	TAKE_FIRST_FORK,
 	TAKE_SECOND_FORK,
 	DIED,
-	FULL
 }			t_status;
 
 /*
