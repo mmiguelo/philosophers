@@ -17,3 +17,20 @@ void	error_msg(const char *error)
 	printf(RED"%s\n"RST, error);
 	exit(EXIT_FAILURE);
 }
+
+long	gettime(t_timecode time_code)
+{
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL))
+		error_msg("Gettimeofday failed\n");
+	if (SECOND == time_code)
+		return (tv.tv_sec + (tv.tv_usec / 1e6));
+	else if (MILISECOND == time_code)
+		return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
+	else if (MICROSECOND == time_code)
+		return ((tv.tv_sec * 1e6) + tv.tv_usec);
+	else
+		error_msg("Wrong input to gettime!\n");
+	return (1992);
+}
