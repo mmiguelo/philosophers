@@ -34,3 +34,24 @@ long	gettime(t_timecode time_code)
 		error_msg("Wrong input to gettime!\n");
 	return (1992);
 }
+
+void	precise_usleep(long usec, t_table *table)
+{
+	long	start;
+	long	elapsed;
+	long	remaining;
+
+	start = gettime(MICROSECOND);
+	while (gettime(MICROSECOND) - start < usec)
+	{
+		if (simulation_finished(table))
+			break;
+		elapsed = gettime(MICROSECOND) - start;
+		remaining = usec - elapsed;
+		if (remaining > 1e3)
+			usleep(usec / 2);
+		else
+			while (gettime(MICROSECOND) - start < usec)
+				;
+	}
+}
