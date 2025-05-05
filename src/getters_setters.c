@@ -35,3 +35,13 @@ void	set_long(t_mtx *mutex, long *dest, long value)
 	*dest = value;
 	safe_mutex_handle(mutex, UNLOCK);
 }
+
+long	get_long(t_mtx *mutex, long *value)
+{
+	long	ret;
+
+	safe_mutex_handle(mutex, LOCK);
+	ret = *value;
+	safe_mutex_handle(mutex, UNLOCK);
+	return (ret);
+}
