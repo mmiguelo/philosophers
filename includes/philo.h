@@ -91,6 +91,7 @@ typedef struct s_philo
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	pthread_t	thread_id; //a philo is a thread
+	t_mtx		philo_mutex;
 	t_table		*table;
 }				t_philo;
 
@@ -138,6 +139,6 @@ bool	simulation_finished(t_table *table);
 void	wait_all_threads(t_table *table);
 long	gettime(t_timecode time_code);
 void	precise_usleep(long usec, t_table *table);
-void	write_status(t_status status, t_philo *philo, bool debug);
+void	write_status(t_status status, t_philo *philo);
 
 #endif

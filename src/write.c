@@ -12,16 +12,14 @@
 
 #include "philo.h"
 
-void	write_status(t_status status, t_philo *philo, bool debug)
+void	write_status(t_status status, t_philo *philo)
 {
 	long	elapsed;
 
 	elapsed = gettime(MILISECOND) - philo->table->start_simulation;
+	safe_mutex_handle(&philo->table->write_mutex, LOCK);
 	if (philo->full)
 		return ;
-	safe_mutex_handle(&philo->table->write_mutex, LOCK);
-	if (debug)
-		write_status_debug(status, philo, elapsed);
 	else
 	{
 		if ((TAKE_FIRST_FORK == status || TAKE_SECOND_FORK == status)
