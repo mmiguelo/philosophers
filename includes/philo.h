@@ -44,6 +44,17 @@ typedef enum e_timecode
 	MICROSECOND
 }			t_timecode;
 
+typedef enum e_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+	FULL
+}			t_status;
+
 /*
 ** ANSI color codes for terminal output
 ** Usage:
@@ -101,6 +112,7 @@ typedef struct s_table
 	bool	end_simulation; // a philo dies or all philo full
 	bool	all_threads_ready; // syncro philospphers
 	t_mtx	table_mutex; // avoid races while reading from table
+	t_mtx	write_mutex;
 	t_fork	*forks; // array of forks
 	t_philo	*philos; // array of philos
 }				t_table;
