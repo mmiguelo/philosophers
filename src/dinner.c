@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 23:58:01 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 23:58:01 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 16:00:07 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 16:00:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 static void	think(t_philo *philo)
 {
-	write_status(THINKING, philo);
+	write_status(THINKING, philo, DEBUG_MODE);
 }
 
 static void	eat(t_philo *philo)
 {
 	safe_mutex_handle(&philo->first_fork->fork, LOCK);
-	write_status(TAKE_FIRST_FORK, philo);
+	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	safe_mutex_handle(&philo->second_fork->fork, LOCK);
-	write_status(TAKE_SECOND_FORK, philo);
+	write_status(TAKE_SECOND_FORK, philo, DEBUG_MODE);
 	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILISECOND));
 	philo->meal_counter++;
+	write_status(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->time_to_eat, philo->table);
 	if (philo->table->nbr_limit_meals > 0
 		&& philo->meal_counter == philo->table->nbr_limit_meals)
 		set_bool(&philo->philo_mutex, &philo->full, true);
 	safe_mutex_handle(&philo->first_fork->fork, UNLOCK);
-	safe_mutex_handle(&philo->first_fork->fork, UNLOCK);
+	safe_mutex_handle(&philo->second_fork->fork, UNLOCK);
 }
 
 void	*dinner_simulation(void *data)
@@ -44,7 +45,7 @@ void	*dinner_simulation(void *data)
 		if (philo->full)
 			break ;
 		eat(philo);
-		write_status(SLEEPING, philo);
+		write_status(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
 		think(philo);
 	}

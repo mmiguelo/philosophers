@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:40:25 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 14:40:25 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 16:01:15 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 16:01:15 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,6 @@ bool	simulation_finished(t_table *table);
 void	wait_all_threads(t_table *table);
 long	gettime(t_timecode time_code);
 void	precise_usleep(long usec, t_table *table);
-void	write_status(t_status status, t_philo *philo);
+void	write_status(t_status status, t_philo *philo, bool debug);
 
 #endif

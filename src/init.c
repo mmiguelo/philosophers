@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 22:11:43 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 22:11:43 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 15:59:23 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 15:59:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	data_init(t_table *table)
 	i = -1;
 	table->end_simulation = false;
 	table->all_threads_ready = false;
-	table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr);
+	table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr); //xxx
 	safe_mutex_handle(&table->table_mutex, INIT);
 	safe_mutex_handle(&table->write_mutex, INIT);
 	table->forks = safe_malloc(sizeof(t_fork) * table->philo_nbr);

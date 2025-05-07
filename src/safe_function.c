@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_function.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 22:13:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 22:13:12 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 16:01:51 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 16:01:51 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*safe_malloc(size_t bytes)
 	void	*ret;
 
 	ret = malloc(bytes);
-	if (!ret)
+	if (NULL == ret)
 		error_msg("Error with malloc\n");
 	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 17:25:17 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 17:25:17 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 16:02:07 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 16:02:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void	precise_usleep(long usec, t_table *table)
 		elapsed = gettime(MICROSECOND) - start;
 		remaining = usec - elapsed;
 		if (remaining > 1e3)
-			usleep(usec / 2);
+			usleep(remaining / 2);
 		else
+		{
 			while (gettime(MICROSECOND) - start < usec)
 				;
+		}
 	}
 }

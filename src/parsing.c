@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 17:25:54 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/04 17:25:54 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/07 16:01:45 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/05/07 16:01:45 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static const char	*valid_input(const char *str)
 	number = str;
 	while (ft_isdigit(*str++))
 		++len;
-	if (len == 10)
+	if (len > 10)
 		error_msg("Invalid input: number too large\n");
 	return (number);
 }
@@ -51,7 +51,7 @@ static long	ft_atol(const char *str)
 	nbr = 0;
 	str = valid_input(str);
 	while (ft_isdigit(*str))
-		nbr = (nbr * 10) + (*str++ - '0');
+		nbr = (nbr * 10) + (*str++ - 48);
 	if (nbr > INT_MAX)
 		error_msg("Invalid input: number too large\n");
 	return (nbr);
