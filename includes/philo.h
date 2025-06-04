@@ -26,7 +26,7 @@
 #                                   DEFINES                                    #
 #=============================================================================*/
 
-#define DEBUG_MODE 0
+# define DEBUG_MODE 0
 
 typedef enum e_opcode
 {
@@ -105,18 +105,20 @@ typedef struct s_fork
 
 typedef struct s_table
 {
-	long	philo_nbr; // 5
-	long	time_to_die; // 800
-	long	time_to_eat; // 300
-	long	time_to_sleep; // 200
-	long	nbr_limit_meals; // [7] | FLAG if -1
-	long	start_simulation; // time of start of simulation
-	bool	end_simulation; // a philo dies or all philo full
-	bool	all_threads_ready; // syncro philospphers
-	t_mtx	table_mutex; // avoid races while reading from table
-	t_mtx	write_mutex;
-	t_fork	*forks; // array of forks
-	t_philo	*philos; // array of philos
+	long		philo_nbr; // 5
+	long		time_to_die; // 800
+	long		time_to_eat; // 300
+	long		time_to_sleep; // 200
+	long		nbr_limit_meals; // [7] | FLAG if -1
+	long		start_simulation; // time of start of simulation
+	bool		end_simulation; // a philo dies or all philo full
+	bool		all_threads_ready; // syncro philospphers
+	long		threads_running_number;
+	t_mtx		table_mutex; // avoid races while reading from table
+	pthread_t	monitor;
+	t_mtx		write_mutex;
+	t_fork		*forks; // array of forks
+	t_philo		*philos; // array of philos
 }				t_table;
 
 /*=============================================================================#

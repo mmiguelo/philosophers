@@ -18,7 +18,7 @@ static void	write_status_debug(t_status status, t_philo *philo, long elapsed)
 		printf(W"%6ld"RST" %d has taken the first fork 🍽️"
 			"\t\t\tnº"B"[🍴 %d  🍴]\n"RST, elapsed, philo->id,
 			philo->first_fork->fork_id);
-	else if(TAKE_SECOND_FORK == status && !simulation_finished(philo->table))
+	else if (TAKE_SECOND_FORK == status && !simulation_finished(philo->table))
 		printf(W"%6ld"RST" %d has taken the second fork 🍽️"
 			"\t\t\tnº"B"[🍴 %d  🍴]\n"RST, elapsed, philo->id,
 			philo->second_fork->fork_id);

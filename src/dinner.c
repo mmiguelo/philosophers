@@ -40,7 +40,7 @@ void	*dinner_simulation(void *data)
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
-	while(!simulation_finished(philo->table))
+	while (!simulation_finished(philo->table))
 	{
 		if (philo->full)
 			break ;
@@ -67,6 +67,7 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
+	safe_thread_handle(&table->monitor, monitor_dinner, table, CREATE);
 	table->start_simulation = gettime(MILISECOND);
 	set_bool(&table->table_mutex, &table->all_threads_ready, true);
 	i = -1;
