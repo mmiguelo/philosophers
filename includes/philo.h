@@ -144,5 +144,6 @@ void	precise_usleep(long usec, t_table *table);
 void	write_status(t_status status, t_philo *philo, bool debug);
 bool	all_threads_running(t_mtx *mutex, long *threads, long philo_nbr);
 void	*monitor_dinner(void *data);
+void	clean(t_table *table);
 
 #endif

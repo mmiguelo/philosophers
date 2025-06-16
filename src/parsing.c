@@ -17,7 +17,7 @@ static inline bool	ft_isdigit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-static bool	ft_isspace(char c)
+static inline bool	ft_isspace(char c)
 {
 	return ((c >= 9 && c <= 13) || c == 32);
 }
