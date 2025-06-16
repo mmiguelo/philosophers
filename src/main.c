@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 		parse_input(&table, av);
 		data_init(&table);
 		dinner_start(&table);
+		clean(&table);
 	}
 	else
 		error_msg("Wrong input:\n"
