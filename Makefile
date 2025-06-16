@@ -22,7 +22,16 @@ RM = rm -rf
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
 
-GENERAL = dinner.c getters_setters.c init.c main.c parsing.c safe_function.c syncro_utils.c utils.c write.c
+GENERAL := dinner.c
+GENERAL +=	getters_setters.c
+GENERAL +=	init.c
+GENERAL +=	main.c
+GENERAL +=	monitor.c
+GENERAL +=	parsing.c
+GENERAL +=	safe_function.c
+GENERAL +=	syncro_utils.c
+GENERAL +=	utils.c
+GENERAL +=	write.c
 
 #==============================================================================#
 #                                    PATHS                                     #
