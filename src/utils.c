@@ -64,7 +64,7 @@ void	clean(t_table *table)
 	int		i;
 
 	i = -1;
-	while(++i < table->philo_nbr)
+	while (++i < table->philo_nbr)
 	{
 		philo = table->philos + i;
 		safe_mutex_handle(&philo->philo_mutex, DESTROY);
