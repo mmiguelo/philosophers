@@ -37,7 +37,7 @@ void	increase_long(t_mtx *mutex, long *value)
 	safe_mutex_handle(mutex, UNLOCK);
 }
 
-void	de_synchronize_pjilos(t_philo *philo)
+void	de_synchronize_philos(t_philo *philo)
 {
 	if (philo->table->philo_nbr % 2 == 0)
 	{

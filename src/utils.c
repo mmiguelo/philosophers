@@ -12,10 +12,10 @@
 
 #include "philo.h"
 
-void	error_msg(const char *error)
+int	error_msg(const char *error)
 {
 	printf(RED"%s\n"RST, error);
-	exit(EXIT_FAILURE);
+	return (1);
 }
 
 long	gettime(t_timecode time_code)
@@ -23,7 +23,7 @@ long	gettime(t_timecode time_code)
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL))
-		error_msg("Gettimeofday failed\n");
+		return (error_msg("Gettimeofday failed\n"), -1);
 	if (SECOND == time_code)
 		return (tv.tv_sec + (tv.tv_usec / 1e6));
 	else if (MILISECOND == time_code)
@@ -31,7 +31,7 @@ long	gettime(t_timecode time_code)
 	else if (MICROSECOND == time_code)
 		return ((tv.tv_sec * 1e6) + tv.tv_usec);
 	else
-		error_msg("Wrong input to gettime!\n");
+		return (error_msg("Wrong input to gettime!\n"), -1);
 	return (1992);
 }
 

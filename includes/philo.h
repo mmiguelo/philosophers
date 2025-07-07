@@ -125,12 +125,12 @@ typedef struct s_table
 #                                   FUNCTIONS                                  #
 #=============================================================================*/
 
-void	parse_input(t_table *table, char **av);
-void	error_msg(const char *error);
+int		parse_input(t_table *table, char **av);
+int		error_msg(const char *error);
 void	data_init(t_table *table);
 void	*safe_malloc(size_t bytes);
-void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
-void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data,
+int		safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
+int		safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data,
 			t_opcode opcode);
 void	dinner_start(t_table *table);
 void	set_bool(t_mtx *mutex, bool *dest, bool value);
@@ -147,6 +147,6 @@ void	*monitor_dinner(void *data);
 void	clean(t_table *table);
 void	think(t_philo *philo, bool pre_simulation);
 void	increase_long(t_mtx *mutex, long *value);
-void	de_synchronize_pjilos(t_philo *philo);
+void	de_synchronize_philos(t_philo *philo);
 
 #endif

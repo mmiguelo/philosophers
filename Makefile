@@ -21,6 +21,7 @@ INC = -I./includes
 RM = rm -rf
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
+SNTZ = -fsanitize=thread
 
 GENERAL := dinner.c
 GENERAL +=	getters_setters.c
@@ -53,6 +54,9 @@ OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 #==============================================================================#
 
 all: $(NAME)
+
+san: $(OBJS)
+	@$(CC) $(FLAGS) $(SNTZ) -o $(NAME) $(OBJS) -lreadline
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

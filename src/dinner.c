@@ -71,7 +71,7 @@ void	*dinner_simulation(void *data)
 	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILISECOND));
 	increase_long(&philo->table->table_mutex,
 		&philo->table->threads_running_number);
-	de_synchronize_pjilos(philo);
+	de_synchronize_philos(philo);
 	while (!simulation_finished(philo->table))
 	{
 		if (philo->full)
