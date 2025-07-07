@@ -19,13 +19,13 @@ int	main(int ac, char **av)
 	if (ac == 5 || ac == 6)
 	{
 		if (parse_input(&table, av) == -1)
-			return(-1);
+			return (-1);
 		data_init(&table);
 		dinner_start(&table);
 		clean(&table);
 	}
 	else
 		return (error_msg("Wrong input:\n"
-			G"Correct is ./philo 5 800 200 200 [7] for example"RST), -1);
+				G"Correct is ./philo 5 800 200 200 [7] for example"RST), -1);
 	return (0);
 }
