@@ -76,6 +76,6 @@ int	parse_input(t_table *table, char **av)
 	if (av[5] && valid_input(av[5]))
 		table->nbr_limit_meals = ft_atol(av[5]);
 	else
-		table->nbr_limit_meals = -1;
+		return (-1);
 	return (0);
 }
