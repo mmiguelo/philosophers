@@ -74,7 +74,7 @@ This project builds strong foundations in:
 
 ```
 ┌─────────┐     ┌─────────┐     ┌─────────┐
-│ THINKING │ ──▶ │ EATING  │ ──▶ │SLEEPING │
+│THINKING │ ──▶ │ EATING  │ ──▶ │SLEEPING │
 └─────────┘     └─────────┘     └─────────┘
      ▲               │                │
      └───────────────┘────────────────┘
@@ -115,7 +115,7 @@ This project builds strong foundations in:
          │                                    │
          ▼                                    ▼
 ┌─────────────────┐              ┌──────────────────────┐
-│  PHILO THREAD   │ × N         │   MONITOR THREAD     │
+│  PHILO THREAD   │ × N          │   MONITOR THREAD     │
 │                 │              │                      │
 │  wait for start │              │  wait for all ready  │
 │  loop:          │              │  loop:               │
