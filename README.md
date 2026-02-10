@@ -21,9 +21,9 @@
 ## 📖 Table of Contents
 
 - [About](#-about)
-- [The Problem](#-the-problem)
+- [The Problem](#%EF%B8%8F-the-problem)
 - [Features](#-features)
-- [How It Works](#-how-it-works)
+- [How It Works](#%EF%B8%8F-how-it-works)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
