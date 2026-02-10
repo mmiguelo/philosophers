@@ -21,7 +21,7 @@
 ## 📖 Table of Contents
 
 - [About](#-about)
-- [The Problem](#the-problem)
+- [The Problem](#-the-problem)
 - [Features](#-features)
 - [How It Works](#-how-it-works)
 - [Getting Started](#-getting-started)
